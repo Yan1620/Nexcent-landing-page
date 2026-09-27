@@ -88,7 +88,7 @@ html:focus-within {
 
 html,
 body {
-    height: 100%;
+    min-height: 100%;
 }
 
 /* Set core body defaults */
@@ -139,6 +139,9 @@ body {
 
 .primary-header {
     padding: 1.375rem 8.33vw 1.375rem 7.29vw;
+    top: 0;
+    position: sticky;
+    z-index: 1000;
 }
 
 .primary-header__wrapper {
@@ -211,6 +214,14 @@ body {
 .clients__text {
     gap: var(--size-200);
     text-align: center;
+}
+
+.carousel {
+    width: 80%;
+    overflow: hidden;
+    margin-inline: auto;
+    -webkit-mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
 }
 
 .clients__logos {
@@ -424,6 +435,7 @@ body {
     border-radius: var(--size-200);
     margin-top: -6rem;
     box-shadow: 0 8px 16px color-mix(in srgb, var(--clr-neutral-300) 40%, transparent);
+    z-index: 10;
 }
 
 .blog__card-title {
@@ -588,6 +600,138 @@ body {
     border: none;
     font-size: var(--fs-header-button);
 }
+
+/* Scroll-driven animations (Progressive enhancement) */
+
+@supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+        @media (min-width: 50rem) {
+            @keyframes scroll {
+                from {
+                    transform: translateX(0);
+                } 
+                to {
+                    transform: translateX(-50%);
+                }
+            }
+
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(40px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        
+            @keyframes reveal {
+                from {
+                    opacity: 0;
+                    transform: translateX(-30px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateX(0);
+                }
+            }
+        
+            @keyframes parallax {
+                from {
+                    opacity: 0;
+                    transform: translateY(-40px) scale(0.9);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0) scale(1);
+                }
+            }
+
+            /* Scroll */
+
+            .clients__logos {
+                animation: scroll both;
+                animation-timeline: scroll(root);
+            }
+        
+            /* FadeInUp */
+        
+            .features__features-item,
+            .blog__card-img {
+                animation: fadeInUp both;
+                animation-timeline: view();
+            }
+        
+            .blog__card:nth-child(1) .blog__card-img {
+                animation-range: entry 30% cover 40%;
+            }
+        
+            .blog__card:nth-child(2) .blog__card-img {
+                animation-range: entry 50% cover 60%;
+            }
+        
+            .blog__card:nth-child(3) .blog__card-img {
+                animation-range: entry 70% cover 80%;
+            }
+        
+            .features__features-item {
+                animation-range: entry 30% cover 50%;
+            }
+        
+            /* Reveal */
+        
+            .features__text,
+            .blog__text,
+            .cta__title,
+            .cta__button,
+            .unlock__content,
+            .design__content,
+            .achievements__text,
+            .testimonials__body {
+                animation: reveal both;
+                animation-timeline: view();
+            }
+        
+            .features__text,
+            .blog__text,
+            .cta__title,
+            .cta__button {
+                animation-range: entry 5% cover 30%;
+            }
+        
+            .unlock__content,
+            .design__content,
+            .achievements__text,
+            .testimonials__body {
+                animation-range: entry 20% cover 50%;
+            }
+        
+            /* Parallax */
+        
+            .unlock__img,
+            .design__img,
+            .achievements__item,
+            .testimonials__img,
+            .blog__card-info {
+                animation: parallax both;
+                animation-timeline: view();
+            }
+        
+            .unlock__img,
+            .design__img,
+            .achievements__item,
+            .testimonials__img {
+                animation-range: entry 20% cover 50%;
+            }
+        
+            .blog__card-info {
+                animation-range: entry 10% cover 40%;
+            }
+        }
+    }
+}
+
 
 /* Utility classes */
 
