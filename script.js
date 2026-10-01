@@ -19,3 +19,39 @@ menuButton.addEventListener("click", () => {
     }
     primaryHeaderRight.toggleAttribute("data-visible");
 })
+
+function closeMenu() {
+    menuButton.setAttribute("aria-expanded", false);
+    primaryHeaderRight.style.height = 0;
+    primaryHeaderRight.removeAttribute("data-visible");
+}
+
+document.addEventListener("keydown", event => {
+    if (event.key === "Escape" && primaryHeaderRight.hasAttribute("data-visible")) {
+        closeMenu();
+    }
+})
+
+const primaryHeader = document.querySelector(".primary-header");
+
+document.addEventListener("click", event => {
+    const isClickInsideHeader = event.target.closest(".primary-header");
+    
+    if (!isClickInsideHeader && primaryHeaderRight.hasAttribute("data-visible")) {
+        closeMenu();
+    }
+});
+
+const headerWrapper = document.querySelector(".primary-header__wrapper");
+
+headerWrapper.addEventListener("click", event => {
+    const logo = event.target.closest(".primary-header__logo");
+    const link = event.target.closest(".primary-header__link");
+    const loginBtn = event.target.closest(".primary-header__login-btn");
+    const signUpBtn = event.target.closest(".primary-header__sign-up-btn");
+
+
+    if (logo || link || loginBtn || signUpBtn) {
+        closeMenu();
+    }
+})
