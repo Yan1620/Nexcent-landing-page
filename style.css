@@ -232,6 +232,8 @@ body {
    ========================================================================== */
 
 .hero {
+    display: flex;
+    align-items: center;
     justify-content: center;
     gap: 6.5rem;
     margin-bottom: var(--space-sm);
@@ -263,6 +265,7 @@ body {
 .clients__text {
     gap: var(--size-200);
     text-align: center;
+    margin-inline: 5vw;
 }
 
 .carousel {
@@ -292,6 +295,7 @@ body {
     gap: var(--size-200);
     text-align: center;
     justify-content: center;
+    margin-inline: 5vw;
 }
 
 .features__title {
@@ -299,8 +303,10 @@ body {
 }
 
 .features__features-items {
+    display: flex;
     justify-content: center;
-    gap: 8rem;
+    gap: 8.9vw;
+    margin-inline: 5vw;
 }
 
 .features__features-item {
@@ -336,6 +342,7 @@ body {
 .unlock__text {
     max-width: 36.41rem;
     gap: var(--size-400);
+    margin-inline: 5vw;
 }
 
 /* ==========================================================================
@@ -343,15 +350,18 @@ body {
    ========================================================================== */
 
 .achievements {
+    display: flex;
+    align-items: center;
     justify-content: center;
     margin-bottom: var(--space-lg);
-    gap: 4.5rem;
+    gap: min(5vw, 4.5rem);
     padding-block: 4rem;
 }
 
 .achievements__text {
     gap: var(--size-200);
-    width: 33.75rem;
+    max-width: 33.75rem;
+    margin-inline: 5vw;
 }
 
 .achievements__title {
@@ -365,7 +375,8 @@ body {
 .achievements__list {
     grid-template-columns: 1fr 1fr;
     row-gap: 2.5rem;
-    column-gap: 1.875rem;
+    column-gap: min(2vw, 1.875rem);
+    margin-inline: 5vw;
 }
 
 .achievements__item {
@@ -390,6 +401,7 @@ body {
     justify-content: center;
     margin-bottom: var(--space-lg);
     gap: 3.1rem;
+    margin-inline: 5vw;
 }
 
 .design__content {
@@ -406,14 +418,16 @@ body {
    ========================================================================== */
 
 .testimonials {
+    display: flex;
     justify-content: center;
     margin-bottom: var(--space-lg);
-    gap: 4.875rem;
+    gap: min(3vw, 4.875rem);
     padding-block: var(--size-600);
 }
 
 .testimonials__body {
     gap: var(--size-600);
+    margin-inline: 5vw;
 }
 
 .testimonials__content {
@@ -441,11 +455,14 @@ body {
 }
 
 .testimonials__customers {
-    gap: var(--size-600);
+    column-gap: var(--size-600);
+    row-gap: var(--size-200);
+    flex-wrap: wrap;
 }
 
 .testimonials__customers-logos {
-    gap: 2.56rem;
+    gap: clamp(1rem, 2.84vw, 2.25rem);
+    flex-wrap: wrap;
 }
 
 .testimonials__customers-link {
@@ -473,6 +490,7 @@ body {
     text-align: center;
     gap: var(--size-200);
     justify-content: center;
+    margin-inline: 5vw;
 }
 
 .blog__subtitle {
@@ -480,7 +498,11 @@ body {
 }
 
 .blog__cards {
+    display: flex;
+    justify-content: center;
     gap: 1.5rem;
+    margin-inline: 5vw;
+    flex-wrap: wrap;
 }
 
 .blog__card {
@@ -538,6 +560,7 @@ body {
 
 .cta__title {
     max-width: 55.43rem;
+    margin-inline: 5vw;
 }
 
 .cta__button {
@@ -552,7 +575,7 @@ body {
     display: flex;
     align-items: start;
     justify-content: center;
-    gap: 7.81rem;
+    gap: min(8.67vw, 7.81rem);
     padding-block: 4rem;
 }
 
@@ -560,6 +583,7 @@ body {
     gap: 2.5rem;
     justify-content: left;
     width: 21.87rem;
+    margin-left: 5vw;
 }
 
 .primary-footer__copyright {
@@ -588,8 +612,9 @@ body {
 
 .primary-footer__nav {
     display: flex;
-    gap: 1.875rem;
+    gap: min(2vw, 1.875rem);
     align-items: start;
+    margin-right: 5vw;
 }
 
 .primary-footer__column {
@@ -919,9 +944,18 @@ body {
     .primary-header__nav-list {
         gap: 3.3vw;
     }
+
+    .testimonials__img {
+        display: none;
+    }
 }
 
 @media (max-width: 62rem) {
+    :root {
+        --fs-nav: var(--fs-500);
+        --fs-header-button: var(--fs-400);
+    }
+
     body::before {
         content: "";
         position: fixed;
@@ -930,10 +964,12 @@ body {
         z-index: 10;
         opacity: 0;
         transition: opacity 0.5s;
+        pointer-events: none;
     }
 
     body:has(.primary-header__menu-button[aria-expanded="true"])::before {
         opacity: 1;
+        pointer-events: auto;
     }
 
     .primary-header {
@@ -993,10 +1029,103 @@ body {
         margin-inline: auto;
         margin-bottom: 2rem;
     }
+
+    .header-button {
+        padding: 0.8rem 1.5rem;
+    }
+
+    .hero {
+        display: grid;
+    }
+
+    .hero__content {
+        text-align: center;
+    }
+
+    .hero__button {
+        margin-inline: auto;
+    }
+
+    .hero__img {
+        display: none;
+    }
+
+    .clients__logos > img {
+        width: 2.5rem;
+    }
+
+    .features__features-items {
+        flex-wrap: wrap;
+        row-gap: 6vw;
+    }
+
+    .unlock__img {
+        display: none;
+    }
+
+    .unlock__content {
+        text-align: center;
+    }
+
+    .unlock__button {
+        margin-inline: auto;
+    }
+
+    .achievements {
+        display: grid;
+    }
+
+    .achievements__text {
+        text-align: center;
+        justify-content: center;
+    }
+
+    .achievements__list {
+        margin-inline: auto;
+    }
+
+    .achievements__item {
+        justify-content: center;
+    }
+
+    .design__img {
+        display: none;
+    }
+
+    .design__content {
+        text-align: center;
+    }
+
+    .design__button {
+        margin-inline: auto;
+    }
+
+    .primary-footer {
+        flex-direction: column-reverse;
+        gap: 4rem;
+    }
+
+    .primary-footer__nav {
+        margin-inline: auto;
+        justify-content: center;
+        flex-wrap: wrap;
+        row-gap: 3rem;
+    }
+
+    .primary-footer__info {
+        margin-inline: auto;
+        justify-content: center;
+    }
+
+    .primary-footer__column {
+        text-align: center;
+    }
 }
 
-@media (max-width: 50rem) {
-    
+@media (max-width: 34rem) {
+    .achievements__list {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* ==========================================================================
@@ -1072,13 +1201,13 @@ body {
 }
 
 .primary-heading {
-    font-size: var(--fs-primary-heading);
+    font-size: clamp(3rem, 5vw, var(--fs-primary-heading));
     line-height: calc(76/64);
     font-weight: var(--fw-semi-bold);
     letter-spacing: 2px;
 }
 .secondary-heading {
-    font-size: var(--fs-secondary-heading);
+    font-size: clamp(2rem ,3vw, var(--fs-secondary-heading));
     line-height: calc(44/36);
     font-weight: var(--fw-semi-bold);
 }
