@@ -342,7 +342,6 @@ body {
 .unlock__text {
     max-width: 36.41rem;
     gap: var(--size-400);
-    margin-inline: 5vw;
 }
 
 /* ==========================================================================
@@ -933,6 +932,7 @@ body {
 }
 
 @media (max-width: 80rem) {
+    /* Primary header */
     .primary-header {
         padding-inline: 5vw;
     }
@@ -945,16 +945,21 @@ body {
         gap: 3.3vw;
     }
 
+    /* Testimonials */
+
     .testimonials__img {
         display: none;
     }
 }
 
 @media (max-width: 62rem) {
+    /* Root */
     :root {
         --fs-nav: var(--fs-500);
         --fs-header-button: var(--fs-400);
     }
+
+    /* General styling */
 
     body::before {
         content: "";
@@ -971,6 +976,12 @@ body {
         opacity: 1;
         pointer-events: auto;
     }
+
+    body:has(.primary-header__menu-button[aria-expanded="true"]) {
+        overflow: hidden;
+    }
+
+    /* Primary header */
 
     .primary-header {
         padding: 1.75rem  5vw;
@@ -1017,10 +1028,6 @@ body {
         }
     }
 
-    body:has(.primary-header__menu-button[aria-expanded="true"]) {
-        overflow: hidden;
-    }
-
     .primary-header__icon-close {
         display: none;
     }
@@ -1030,9 +1037,13 @@ body {
         margin-bottom: 2rem;
     }
 
+    /* Header-button */
+
     .header-button {
         padding: 0.8rem 1.5rem;
     }
+
+    /* Hero */
 
     .hero {
         display: grid;
@@ -1050,14 +1061,20 @@ body {
         display: none;
     }
 
+    /* Clients */
+
     .clients__logos > img {
         width: 2.5rem;
     }
+
+    /* Features */
 
     .features__features-items {
         flex-wrap: wrap;
         row-gap: 6vw;
     }
+
+    /* Unlock */
 
     .unlock__img {
         display: none;
@@ -1067,9 +1084,15 @@ body {
         text-align: center;
     }
 
+    .unlock__text {
+        margin-inline: 5vw;
+    }
+
     .unlock__button {
         margin-inline: auto;
     }
+
+    /* Achievements */
 
     .achievements {
         display: grid;
@@ -1088,6 +1111,8 @@ body {
         justify-content: center;
     }
 
+    /* Design */
+
     .design__img {
         display: none;
     }
@@ -1099,6 +1124,8 @@ body {
     .design__button {
         margin-inline: auto;
     }
+
+    /* Primary footer */
 
     .primary-footer {
         flex-direction: column-reverse;
@@ -1120,9 +1147,24 @@ body {
     .primary-footer__column {
         text-align: center;
     }
+
+    /* Animations */
+
+    /* Fade in */
+
+    .primary-header__logo,
+    .primary-header__menu-button,
+    .hero__content,
+    .clients__text,
+    .features__text,
+    .carousel {
+        animation: fadeIn 0.8s ease both;
+        animation-delay: 0.2s;
+}
 }
 
 @media (max-width: 34rem) {
+    /* Achievements */
     .achievements__list {
         grid-template-columns: 1fr;
     }
@@ -1144,10 +1186,6 @@ body {
     border: 0;
 }
 
-.d-none {
-    display: none;
-}
-
 .flex {
     display: flex;
     align-items: center;
@@ -1161,43 +1199,11 @@ body {
     color: var(--clr-primary);
 }
 
-.text-primary {
-    color: var(--clr-primary);
-}
-.text-neutral-100 {
-    color: var(--clr-neutral-100);
-}
-.text-neutral-200 {
-    color: var(--clr-neutral-200);
-}
-.text-neutral-600 {
-    color: var(--clr-neutral-600);
-}
-.text-neutral-700 {
-    color: var(--clr-neutral-700);
-}
-
-.bg-primary {
-    background-color: var(--clr-primary);
-}
-.bg-neutral-100 {
-    background-color: var(--clr-neutral-100);
-}
 .bg-neutral-200 {
     background-color: var(--clr-neutral-200);
 }
 .bg-neutral-800 {
     background-color: var(--clr-neutral-800);
-}
-
-.fw-semi-bold {
-    font-weight: var(--fw-semi-bold);
-}
-.fw-medium {
-    font-weight: var(--fw-medium);
-}
-.fw-regular {
-    font-weight: var(--fw-regular);
 }
 
 .primary-heading {
@@ -1229,17 +1235,4 @@ body {
     font-weight: var(--fw-regular);
     line-height: var(--lh-body);
     color: var(--clr-neutral-600);
-}
-
-.fs-300 {
-    font-size: var(--fs-300);
-}
-.fs-400 {
-    font-size: var(--fs-400);
-}
-.fs-500 {
-    font-size: var(--fs-500);
-}
-.fs-600 {
-    font-size: var(--fs-600);
 }
