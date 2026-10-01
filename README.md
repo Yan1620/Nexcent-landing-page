@@ -1,5 +1,7 @@
 # Nexcent – Landing Page
 
+![Preview](Images/preview.png)
+
 [English](#english) | [Русский](#русский)
 
 ---
